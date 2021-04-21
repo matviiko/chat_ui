@@ -1,13 +1,13 @@
 import * as React from "react";
 import {ChangeEvent, useState} from "react";
 
-interface ICheckboxWithLabel {
+interface Props {
     type?: string;
     label: string;
     output(value: boolean): void;
 }
 
-export const CheckboxWithLabel: React.FC<ICheckboxWithLabel> = (props) => {
+export const CheckboxWithLabel: React.FC<Props> = (props) => {
 
     const { type = 'checkbox', label, output} = props;
     const [checked, setChecked] = useState(false);

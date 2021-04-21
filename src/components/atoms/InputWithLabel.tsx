@@ -1,7 +1,7 @@
 import * as React from "react";
 import {ChangeEvent} from "react";
 
-export interface IInputWithLabel {
+interface Props {
     value: string;
     initialValue?: string;
     type?: string;
@@ -12,7 +12,7 @@ export interface IInputWithLabel {
     output(value: string): void;
 }
 
-export const InputWithLabel: React.FC<IInputWithLabel> = (props) => {
+export const InputWithLabel: React.FC<Props> = (props) => {
     const {value, type = 'text', placeholder, icon, label, children, classContainer = 'mb-3', output} = props
     const onChange = (event: ChangeEvent<HTMLInputElement>) => {
         output(event.target.value);
