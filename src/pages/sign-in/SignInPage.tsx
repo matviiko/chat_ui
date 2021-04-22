@@ -1,6 +1,6 @@
 import React from "react";
 import logo from "../../assets/images/logo-dark.png";
-import {SignInForm} from "../../components/molecules/SignInForm";
+import {SignInForm} from "../../components/organisms/SignInForm";
 
 export const SignInPage: React.FC = () => {
     return (

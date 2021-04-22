@@ -1,12 +1,12 @@
 import React from 'react';
 import './App.scss';
-import {SignInPage} from "./pages/sign-in/SignInPage";
 import {EnterLayout} from "./hoc/Enter-layout";
+import {SignUpPage} from "./pages/sign-up/SignUpPage";
 
 function App() {
   return (
       <EnterLayout>
-        <SignInPage />
+        <SignUpPage />
       </EnterLayout>
   );
 }

@@ -3,7 +3,6 @@ import {ChangeEvent} from "react";
 
 interface Props {
     value: string;
-    initialValue?: string;
     type?: string;
     placeholder: string;
     icon: string;
