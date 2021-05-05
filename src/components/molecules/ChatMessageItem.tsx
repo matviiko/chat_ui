@@ -1,5 +1,4 @@
 import * as React from "react";
-import {map} from "react-bootstrap/ElementChildren";
 
 interface Props {
     firstName: string;
@@ -27,7 +26,7 @@ export const ChatMessageItem: React.FC<Props> = (props) => {
                                 className="avatar-title rounded-circle online bg-soft-primary text-primary">
                                 {firstName[0].toLocaleUpperCase()}
                             </span>
-                            <span className="user-status"></span>
+                            <span className="user-status"/>
                         </div>
                     </div>
                     <div className="flex-1 overflow-hidden">

@@ -7,12 +7,12 @@ import {Main} from "./pages/main/Main";
 
 function App() {
   return (
-      // <EnterLayout>
-      //   <SignUpPage />
-      // </EnterLayout>
-        <MainLayout>
-            <Main />
-        </MainLayout>
+      <EnterLayout>
+        <SignUpPage />
+      </EnterLayout>
+      //   <MainLayout>
+      //       <Main />
+      //   </MainLayout>
   );
 }
 

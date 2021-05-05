@@ -7,6 +7,8 @@ export const SignUpForm: React.FC = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
+
+
     const resetForm = () => {
         setEmail('');
         setUsername('');
