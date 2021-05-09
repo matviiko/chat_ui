@@ -1,10 +1,11 @@
-import axios, { AxiosResponse } from "axios";
+import axios from "axios";
 
 interface RegisterRequest {
     user: string;
     email: string;
     password: string;
     role: Array<string>;
+    message?: string;
 }
 
 interface LoginRequest {
@@ -27,7 +28,7 @@ enum ROLE {
 
 const API_URL = 'http://localhost:8089/api/auth/';
 
-export const register = (username: string, email: string, password: string) => {
+ const register = (username: string, email: string, password: string) => {
     return axios.post<RegisterRequest>(API_URL + 'signup', {
         username,
         email,
@@ -36,7 +37,7 @@ export const register = (username: string, email: string, password: string) => {
     })
 };
 
-export const login = (username: string, password: string) => {
+ const login = (username: string, password: string) => {
     return axios.post<LoginResponse>(API_URL + 'signin', {
         username,
         password,
@@ -48,11 +49,13 @@ export const login = (username: string, password: string) => {
     })
 };
 
-export const logout = () => {
+ const logout = () => {
     localStorage.removeItem("user");
 };
 
-export const getCurrentUser = () => {
+ const getCurrentUser = () => {
     return JSON.parse(localStorage.getItem('user') as string);
 };
+
+export default {login, logout, getCurrentUser, register};
 
