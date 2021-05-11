@@ -5,7 +5,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {RootStore} from "../../reducers";
 import {required, vpassword, vusername} from "../../services/validators.service";
 import {login} from "../../actions/auth";
-import { Redirect, RouteComponentProps } from "react-router-dom";
+import { Redirect, RouteComponentProps, useHistory } from "react-router-dom";
 
 
 export const SignInForm: React.FC<RouteComponentProps> = (props) => {
@@ -16,6 +16,7 @@ export const SignInForm: React.FC<RouteComponentProps> = (props) => {
     const { isLoggedIn } = useSelector((state: RootStore) => state.authState);
     const { message } = useSelector((state: RootStore) => state.messageState)
     const dispatch = useDispatch();
+    const history = useHistory()
 
     const isDisabled = (): boolean => {
         return (!!required(username) || !!required(password) || !!vusername(username) || !!vpassword(password));
@@ -27,7 +28,7 @@ export const SignInForm: React.FC<RouteComponentProps> = (props) => {
         setLoading(true);
         dispatch(login(username, password))
             .then(() => {
-                // props.history.push("/home");
+                history.push("/home");
                 window.location.reload();
             })
             .catch(() => {
@@ -40,7 +41,7 @@ export const SignInForm: React.FC<RouteComponentProps> = (props) => {
     }
 
     if (isLoggedIn) {
-        // return <Redirect to="/home" />;
+        return <Redirect to="/home" />;
     }
 
     return (

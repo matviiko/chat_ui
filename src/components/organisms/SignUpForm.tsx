@@ -5,6 +5,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {RootStore} from "../../reducers";
 import {register} from "../../actions/auth";
 import {required, validEmail, vpassword, vusername} from "../../services/validators.service";
+import {Redirect} from "react-router-dom";
 
 
 
@@ -15,6 +16,7 @@ export const SignUpForm: React.FC = () => {
     const [successful, setSuccessful] = useState(false);
 
     const { message } = useSelector((state: RootStore) => state.messageState);
+    const { isLoggedIn } = useSelector((state: RootStore) => state.authState);
     const dispatch = useDispatch();
 
     const isDisabled = (): boolean => {
@@ -35,6 +37,10 @@ export const SignUpForm: React.FC = () => {
             .catch(() => setSuccessful(false))
 
         resetForm();
+    }
+
+    if (isLoggedIn) {
+        return <Redirect to="/home"/>;
     }
 
     return (

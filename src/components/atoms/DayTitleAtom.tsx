@@ -1,7 +1,7 @@
 import * as React from "react";
 
 export const DayTitleAtom: React.FC = () => {
-    const createTitle = () => {};
+    // const createTitle = () => {};
 
     return (
         <li>

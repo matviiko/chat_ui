@@ -23,7 +23,8 @@ export interface LoginResponse {
 }
 
 enum ROLE {
-    USER = "ROLE_USER"
+    USER = "ROLE_USER",
+    ADMIN = "ROLE_ADMIN"
 }
 
 const API_URL = 'http://localhost:8089/api/auth/';
