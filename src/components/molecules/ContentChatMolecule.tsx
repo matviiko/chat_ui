@@ -11,13 +11,13 @@ export const ContentChatMolecule: React.FC = () => {
                     >
                         <div className="simplebar-content" >
                             <ul className="list-unstyled mb-0">
-                                <ConversationMessage isGuest={true} firstName={'matvii'} lastName={'kopchak'} messages={[{text: 'Hello', date: new Date()}, {text: 'world', date: new Date()}]} />
-                                <ConversationMessage isGuest={false} firstName={'matvii'} lastName={'kopchak'} messages={[{text: 'Hello', date: new Date()}, {text: 'world', date: new Date()}]} />
+                                <ConversationMessage key="1" isGuest={true} firstName={'matvii'} lastName={'kopchak'} messages={[{text: 'Hello', date: new Date()}, {text: 'world', date: new Date()}]} />
+                                <ConversationMessage  key="2"  isGuest={false} firstName={'matvii'} lastName={'kopchak'} messages={[{text: 'Hello', date: new Date()}, {text: 'world', date: new Date()}]} />
 
                                <DayTitleAtom />
 
-                                <ConversationMessage isGuest={true} firstName={'matvii'} lastName={'kopchak'} messages={[{text: 'Hello', date: new Date()}, {text: 'world', date: new Date()}]} />
-                                <ConversationMessage isGuest={false} firstName={'matvii'} lastName={'kopchak'} messages={[{text: 'Hello', date: new Date()}, {text: 'world', date: new Date()}]} />
+                                <ConversationMessage key="3"  isGuest={true} firstName={'matvii'} lastName={'kopchak'} messages={[{text: 'Hello', date: new Date()}, {text: 'world', date: new Date()}]} />
+                                <ConversationMessage key="4"  isGuest={false} firstName={'matvii'} lastName={'kopchak'} messages={[{text: 'Hello', date: new Date()}, {text: 'world', date: new Date()}]} />
                             </ul>
                         </div>
                     </div>

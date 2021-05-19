@@ -1,7 +1,17 @@
 import * as React from "react";
 import {ChatMessageItem} from "../molecules/ChatMessageItem";
+import {useSelector} from "react-redux";
+import {getRoomsState} from "../../selectors/rooms";
+import {useEffect, useState} from "react";
+import {Room} from "../../services/room.service";
 
 export const ChatListOrganism: React.FC = () => {
+    const roomsState = useSelector(getRoomsState)
+    const [rooms, setRooms] = useState<Room[] | Array<null>>([])
+    useEffect(() => {
+        setRooms(roomsState.rooms)
+    }, [roomsState.rooms])
+
     return (
         <div className="px-2">
             <h5 className="mb-3 px-3 font-size-16">Recent</h5>
@@ -13,24 +23,13 @@ export const ChatListOrganism: React.FC = () => {
                             <div className="simplebar-content-wrapper">
                                 <div className="simplebar-content">
                                     <ul className="list-unstyled chat-list chat-user-list">
-                                        <ChatMessageItem
-                                            firstName="matvii"
-                                            lastName="kopchak"
-                                            unreadMessages={0}
-                                            lastMessage="Last Message"
-                                            timeLastMessage={new Date()} />
-                                        <ChatMessageItem
-                                            firstName="matvii"
-                                            lastName="kopchak"
-                                            unreadMessages={2}
-                                            lastMessage="Last Message"
-                                            timeLastMessage={new Date()} />
-                                        <ChatMessageItem
-                                            firstName="matvii"
-                                            lastName="kopchak"
-                                            unreadMessages={2}
-                                            lastMessage="Last Message"
-                                            timeLastMessage={new Date()} />
+                                        {rooms.length > 0 ? rooms.map((room) =>
+                                                <ChatMessageItem
+                                            key={room.id}
+                                            name={room.name}
+                                        />)
+                                            : <p>No messages...</p>}
+
                                     </ul>
                                 </div>
                             </div>

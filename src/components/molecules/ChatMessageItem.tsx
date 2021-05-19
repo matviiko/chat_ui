@@ -1,44 +1,26 @@
 import * as React from "react";
 
 interface Props {
-    firstName: string;
-    lastName: string;
-    unreadMessages: number;
-    lastMessage: string;
-    timeLastMessage: Date;
+    name: string;
 }
 export const ChatMessageItem: React.FC<Props> = (props) => {
-    const {firstName, lastName, lastMessage, unreadMessages, timeLastMessage} = props
+    const {name} = props
 
-    const getTimeLastMessage = (time: Date) => {
-        const date = time.getDate();
-        const month = time.getMonth();
-        const year = time.getFullYear();
-        return `${date} ${month} ${year}`
-    };
     return (
-        <li className={!!unreadMessages ? 'unread' : ''}>
+        <li>
             <a href="#">
                 <div className="d-flex">
                     <div className="chat-user-img align-self-center me-3 ms-0">
                         <div className="avatar-xs">
                             <span
                                 className="avatar-title rounded-circle online bg-soft-primary text-primary">
-                                {firstName[0].toLocaleUpperCase()}
+                                {name[0].toLocaleUpperCase()}
                             </span>
-                            <span className="user-status"/>
                         </div>
                     </div>
-                    <div className="flex-1 overflow-hidden">
-                        <h5 className="text-truncate font-size-15 mb-1">{firstName + ' ' + lastName}</h5>
-                        <p className="chat-user-message text-truncate mb-0">{lastMessage}</p>
+                    <div className="overflow-hidden text-center">
+                        <h5 className="text-truncate font-size-18 m-0">{name}</h5>
                     </div>
-                    <div className="font-size-11">{getTimeLastMessage(timeLastMessage)}</div>
-                    {unreadMessages ?
-                    <div className="unread-message">
-                        <span className="badge badge-soft-danger rounded-pill">{unreadMessages.toString()}</span>
-                    </div> : null
-                    }
                 </div>
             </a>
         </li>

@@ -1,7 +1,7 @@
-import {LoginResponse} from "./auth.service";
+import {User} from "./auth.service";
 
 export const authHeader = () => {
-    const user: LoginResponse = JSON.parse(localStorage.getItem('user') as string);
+    const user: User = JSON.parse(localStorage.getItem('user') as string);
 
     if (user && user.token) {
         return { Authorization: 'Bearer ' + user.token };

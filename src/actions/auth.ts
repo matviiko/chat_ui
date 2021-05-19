@@ -5,6 +5,7 @@ import {
     LOGIN_FAIL,
     LOGOUT,
     SET_MESSAGE,
+    ROOMS_DESTROY,
 } from "./types";
 
 import AuthService from "../services/auth.service";
@@ -84,6 +85,9 @@ export const logout = () => (dispatch: Dispatch) => {
     dispatch({
         type: LOGOUT,
     });
+    dispatch({
+        type: ROOMS_DESTROY
+    })
 };
 
 

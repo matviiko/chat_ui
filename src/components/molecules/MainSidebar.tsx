@@ -1,16 +1,13 @@
 import * as React from "react";
 import logo from "../../assets/images/logo.svg"
-import {NavLink, Redirect} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import {logout} from "../../actions/auth";
+import {getUserById} from "../../services/user.service";
 
 export const MainSidebar: React.FC = () => {
     const dispatch = useDispatch();
 
-    const logoutHandler = () => {
-        dispatch(logout())
-        return <Redirect to="/" />
-    };
     return (
         <div className="side-menu flex-lg-column me-lg-1 ms-lg-0">
             {/*Logo*/}
@@ -26,7 +23,7 @@ export const MainSidebar: React.FC = () => {
             {/*Start side-menu nav*/}
             <div className="flex-lg-column my-auto">
                 <ul className="nav nav-pills side-menu-nav justify-content-center">
-                    <li className="nav-item" >
+                    <li className="nav-item" onClick={() => {getUserById(2).then(r => console.log(r))}} >
                         <NavLink to="/home" className="nav-link active"
                                  // activeClassName="active"
                                  title="Profile">
@@ -40,10 +37,10 @@ export const MainSidebar: React.FC = () => {
                             <i className="ri-message-3-line"/>
                         </NavLink>
                     </li>
-                    <li className="nav-item">
-                        <a className="nav-link"
+                    <li className="nav-item" onClick={() => dispatch(logout())}>
+                        <a className="nav-link" style={{cursor: "pointer"}}
                                  title="Logout"
-                                 onClick={logoutHandler}>
+                                 >
                             <i className="ri-logout-circle-r-line" />
                         </a>
                     </li>

@@ -6,13 +6,13 @@ import {
     LOGOUT,
 } from "../actions/types";
 import {AnyAction} from "redux";
-import {LoginResponse} from "../services/auth.service";
+import {User} from "../services/auth.service";
 
-const user: LoginResponse  = JSON.parse(localStorage.getItem("user") as string);
+const user: User  = JSON.parse(localStorage.getItem("user") as string);
 
 export interface AuthState {
     isLoggedIn: boolean;
-    user: LoginResponse | null;
+    user: User | null;
 }
 
 const initialState: AuthState = user

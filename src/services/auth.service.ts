@@ -14,12 +14,17 @@ interface LoginRequest {
 }
 
 // NEED EDIT Interface
-export interface LoginResponse {
+export interface User {
     id: number;
     user: string;
     password: string;
     token: string;
-    role: Array<string>;
+    role: Array<Roles | string>;
+}
+
+export interface Roles {
+    id: number;
+    name: string;
 }
 
 enum ROLE {
@@ -39,10 +44,10 @@ const API_URL = 'http://localhost:8089/api/auth/';
 };
 
  const login = (username: string, password: string) => {
-    return axios.post<LoginResponse>(API_URL + 'signin', {
+    return axios.post<User>(API_URL + 'signin', {
         username,
         password,
-    }).then((response): LoginResponse => {
+    }).then((response): User => {
         if (response.data.token) {
             localStorage.setItem("user", JSON.stringify(response.data));
         }
