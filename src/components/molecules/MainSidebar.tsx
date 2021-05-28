@@ -1,12 +1,15 @@
 import * as React from "react";
 import logo from "../../assets/images/logo.svg"
 import {NavLink} from "react-router-dom";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {logout} from "../../actions/auth";
 import {getUserById} from "../../services/user.service";
+import {showRoomList} from "../../actions/sidebar";
+import {getSidebarState} from "../../selectors/sidebar";
 
 export const MainSidebar: React.FC = () => {
     const dispatch = useDispatch();
+    const {isShowRoomsList} = useSelector(getSidebarState);
 
     return (
         <div className="side-menu flex-lg-column me-lg-1 ms-lg-0">
@@ -24,18 +27,16 @@ export const MainSidebar: React.FC = () => {
             <div className="flex-lg-column my-auto">
                 <ul className="nav nav-pills side-menu-nav justify-content-center">
                     <li className="nav-item" onClick={() => {getUserById(2).then(r => console.log(r))}} >
-                        <NavLink to="/home" className="nav-link active"
-                                 // activeClassName="active"
+                        <NavLink to="/profile" className="nav-link"
                                  title="Profile">
                             <i className="ri-user-2-line"/>
                         </NavLink>
                     </li>
-                    <li className="nav-item">
-                        <NavLink to="/register" className="nav-link"
-                                 // activeClassName="active"
+                    <li className="nav-item" onClick={() => dispatch(showRoomList())}>
+                        <a className={isShowRoomsList ? 'nav-link active' : 'nav-link' }
                                  title="Chats">
                             <i className="ri-message-3-line"/>
-                        </NavLink>
+                        </a>
                     </li>
                     <li className="nav-item" onClick={() => dispatch(logout())}>
                         <a className="nav-link" style={{cursor: "pointer"}}

@@ -4,7 +4,7 @@ import {UserChatOrganism} from "../../components/organisms/UserChatOrganism";
 import {TabsOrganism} from "../../components/organisms/TabsOrganism";
 import {useDispatch, useSelector} from "react-redux";
 import {getIdUser} from "../../selectors/auth";
-import {useEffect} from "react";
+import {useEffect, useMemo} from "react";
 import {getAllRooms} from "../../actions/room";
 
 export const Main: React.FC = () => {
@@ -13,13 +13,15 @@ export const Main: React.FC = () => {
 
     useEffect(() => {
         dispatch(getAllRooms(idUser))
-        console.log('1')
-    }, [])
+        console.log('Main')
+    })
+
+    const TabsMemo = useMemo(() => TabsOrganism, [])
 
     return (
         <React.Fragment>
             <MainSidebar/>
-            <TabsOrganism/>
+            <TabsMemo/>
             <UserChatOrganism/>
         </React.Fragment>
     )

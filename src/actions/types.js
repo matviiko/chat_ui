@@ -11,3 +11,6 @@ export const CLEAR_MESSAGE = "CLEAR_MESSAGE";
 export const GET_ROOM_SUCCESS = "GET_ROOM_SUCCESS";
 export const GET_ROOM_FAIL = "GET_ROOM_FAIL";
 export const ROOMS_DESTROY = "ROOMS_DESTROY";
+
+// Sidebar State
+export const SHOW_OR_HIDE_ROOMS_LIST = "SHOW_ROOMS_LIST";

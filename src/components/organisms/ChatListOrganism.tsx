@@ -10,6 +10,7 @@ export const ChatListOrganism: React.FC = () => {
     const [rooms, setRooms] = useState<Room[] | Array<null>>([])
     useEffect(() => {
         setRooms(roomsState.rooms)
+        console.log('chatList');
     }, [roomsState.rooms])
 
     return (
